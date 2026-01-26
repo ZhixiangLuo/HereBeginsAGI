@@ -1,0 +1,110 @@
+---
+type: always
+description: Continuous learning capability and methodology for continuous improvement
+---
+
+# Continuous Learning and Improvement
+
+Learning in HereBeginsAGI has three tracks:
+
+1. **Fast iteration of execution documents** (keep plans/specs aligned with reality as you execute)
+2. **Project diary** (project-only record keeping + future-impact callouts)
+3. **Careful evolution of the core** (slow, evidence-based changes to the core rules)
+
+## 1) Fast Iteration of Execution Documents (Living Documents)
+
+Execution documents (product specs, plans, investigations) are *living*: they evolve from executing their own plan.
+
+### Purpose
+- Keep decisions aligned with reality, not stale assumptions.
+- Make progress visible and reversible.
+- Turn execution outcomes into reusable knowledge.
+
+### Minimal structure (fast, lightweight)
+Include these sections in any execution doc:
+
+1. **Objective & success criteria** (what “done” means)
+2. **Facts / Assumptions / Unknowns**
+3. **Plan (small reversible steps)** + per-step verification
+4. **Learning log** (what changed your plan and why)
+5. **Updates** (what you changed in the doc as a result)
+
+### Learning log format (fast iteration)
+Each entry should be short and concrete:
+- **Observation**: what happened (evidence)
+- **Impact**: why it matters (success criteria affected?)
+- **Decision**: what changed in the plan/doc
+- **Next check**: what you will verify next
+
+### Assumption lifecycle
+All execution docs start with assumptions. As you execute:
+- **Untested** → **Proven true/false** → **Superseded**
+
+## 2) Project Diary (Project Record Keeping)
+
+The project diary is a *chronological record* of work for the project. It supports:
+- Recall (“what did we do, why, and how?”)
+- Continuity (resume work after time away)
+- Future impact (call out decisions/constraints/risks that may matter later)
+
+### Where
+- Repo-level: `project_diary.md`
+- (Optionally) per-project diaries in the future if the repo grows
+
+### When to write
+- End of each work session, or after any meaningful decision/change.
+
+### How to write (principle: low friction, not rigid)
+Use chronological order (oldest first, newest at the bottom). Write like a lab notebook: prose is fine, bullets are fine, headings are optional.
+
+Minimum recommendation:
+- Start an entry with a timestamp heading: `## YYYY-MM-DD HH:MM`
+- Write enough so Future You can answer: **what happened, why, how, what changed, and what might matter later**.
+
+Helpful (optional) prompts you can include when relevant:
+- **What / why**: the decision or progress and the reasoning behind it
+- **How**: approach taken, constraints, trade-offs
+- **Changes**: key edits (link files/commands if helpful)
+- **Verification**: what you checked (and outcome)
+- **Future impact**: anything likely to matter later (risks, constraints, follow-up ideas)
+
+Avoid using the diary as a task tracker. If you have next actions, track them in a real task system and optionally link it in the entry.
+
+### Optional: how diary notes can inform the core
+If you notice a recurring pattern that seems **general** (not project-specific), capture it as a candidate and evolve the core *slowly* (see section 3).
+
+## 3) Slow, Careful Evolution of the Core
+
+Core changes should be **rare and evidence-based**. The core must stay minimal and high-leverage.
+
+### What counts as “core”
+In this repo, the core is:
+- `core-principles/01-problem-solving.mdc`
+- `core-principles/02-continuous-learning.mdc`
+
+### Core update criteria (guardrails)
+Promote something into core only if:
+- **Recurring**: it prevented or resolved multiple failures across sessions/tasks
+- **General**: it applies across domains and problem types
+- **Actionable**: it changes behavior (not just “be good”)
+- **Testable**: you can tell if following it improved outcomes
+- **Non-obvious**: it’s not something LLMs already do reliably
+
+### “Minimal rules, maximum leverage”
+Before adding a rule, ask:
+- “Can this be derived from existing principles + base model knowledge?”
+If yes, don’t add it.
+
+### Safe core evolution loop
+1. **Candidate**: write the proposed rule as a draft (in the diary first)
+2. **Trial**: apply it for multiple sessions/tasks
+3. **Evidence**: document concrete improvements (or failures) in the diary
+4. **Integrate**: add/refine the core rule wording
+5. **Stabilize**: keep it unchanged unless new evidence demands refinement
+
+### What to do when rules conflict
+Prefer:
+- Clearer objective/success criteria
+- Fewer steps (simplicity)
+- Direct verification from the source of truth
+If conflict persists, revise the wording so the trade-off is explicit.

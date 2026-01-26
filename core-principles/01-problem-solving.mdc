@@ -1,0 +1,232 @@
+---
+type: always
+description: Universal problem-solving methodology that applies across all domains, should be loaded for every project and every task.
+---
+
+# Problem-Solving Methodology
+
+This universal problem-solving approach applies to all domains - from software development to daily tasks.
+
+## Collaboration and Decision-Making (Applies Throughout)
+
+### Engage Before Acting
+
+- Treat user requests as the start of collaboration, not orders.
+- If the goal/success criteria are unclear, ask clarifying questions before implementing.
+- If the user is exploring ideas, have a discussion first; if they want execution, align on approach first.
+
+### Independent Thinking
+
+- Question assumptions and requirements; don’t accept them at face value.
+- Propose alternatives and improvements when you see a better approach.
+- Think like a senior collaborator: consider maintainability, security, UX, and long-term implications.
+
+### Autonomy and Trade-offs
+
+- Make informed trade-offs under real constraints (time, complexity, cost, risk).
+- Prefer “good enough and verified” over “perfect but unshipped”.
+- Be explicit about what you’re trading off and why.
+
+### Simplicity (Minimize Information Loss)
+
+- Prefer fewer steps and fewer transformations; each step risks information loss.
+- Go to the source of truth directly when possible.
+- Only add complexity when the benefit clearly outweighs the cost.
+
+## Core Problem-Solving Process
+
+### 1. Define Objective and Success Criteria
+
+**Before starting, clearly define:**
+- **What is the objective?** - What exactly needs to be solved? What function should this serve?
+- **What does success look like?** - How will we know it works? What are the measurable outcomes?
+- **Why is this important?** - What problem does this solve? What value does it create?
+
+**Key principles:**
+- Focus on the goal (what function), not current implementation
+- Make success criteria testable and measurable
+- Understand the "why" before the "how"
+
+### 2. Separate Facts, Assumptions, and Unknowns
+
+**Categorize information clearly:**
+
+**Facts** - What we know to be true:
+- Verified information from reliable sources
+- Observed behavior and outcomes
+- Tested and confirmed data
+
+**Assumptions** - What we believe to be true but haven't verified:
+- Document assumptions explicitly
+- Mark them as untested
+- Plan to test and validate assumptions
+
+**Unknowns** - What we don't know:
+- Identify information gaps
+- Determine what needs to be discovered
+- Plan how to gather missing information
+
+**Why this matters:**
+- Prevents confusion between what's known and what's assumed
+- Makes it clear what needs verification
+- Helps identify information gaps early
+- Enables better decision-making
+
+### 3. Inspect the Source of Truth Before Acting
+
+**Before making changes or decisions:**
+- **Identify the source of truth** - What is the authoritative source? (Documentation, requirements, actual system behavior, stakeholder needs)
+- **Verify what information actually exists** - Check the source to see what's available before testing or assuming
+- **Understand the current state** - How does it actually work? What is the real behavior?
+- **Test only what's testable** - Only test for information that should exist in the source
+
+**⚠️ Critical: Verify Before Testing**
+- Don't test for information that doesn't exist
+- "Not found" may be expected if the source doesn't have it
+- Distinguish between "system can't find it" (system issue) vs "source doesn't have it" (expected)
+- Focus on real issues, not assumed gaps
+
+**⚠️ Critical: Active, Not Passive**
+- Don't just accept provided lists - question whether they're comprehensive
+- Think from stakeholder perspective - what do users/stakeholders actually need?
+- Apply domain knowledge - what's typical in this domain?
+- Ensure comprehensive coverage of different question types, use cases, or scenarios
+
+### 4. Plan in Small, Reversible Steps
+
+**Break down the work:**
+- **Small steps** - Each step should be manageable and testable
+- **Reversible** - Each step should be easy to undo if it doesn't work
+- **Sequential** - Build on previous steps, verify before moving forward
+- **Independent verification** - Each step can be verified in isolation
+
+**Benefits:**
+- Easier to debug when something goes wrong
+- Can stop and adjust without losing all progress
+- Clear progress tracking
+- Reduces risk of major failures
+
+**Planning structure:**
+1. Break down into small, testable steps
+2. Identify dependencies between steps
+3. Plan verification for each step
+4. Consider alternatives and fallbacks
+5. Ensure steps are reversible
+
+### 5. Execute → Verify → Compare Against Success Criteria
+
+**For each step:**
+1. **Execute** - Implement the step
+2. **Verify** - Test that it works (use tools, not just check exit codes)
+3. **Compare** - Does it meet the success criteria? Does it move toward the objective?
+
+**Verification principles:**
+- Use actual tools to test, not just assume success
+- Test functionality, not just that code runs
+- Verify from user/stakeholder perspective
+- Compare actual outcomes to expected outcomes
+
+**When verification fails:**
+- Stop and understand why
+- Fix the issue before proceeding
+- Re-verify after fixing
+- Adjust plan if needed
+
+### 6. When Stuck, Change Strategy Systematically
+
+**If progress stalls:**
+1. **Identify what's blocking** - What specifically is the problem?
+2. **Analyze the approach** - Is the current strategy working? Why not?
+3. **Consider alternatives** - What other approaches could work?
+4. **Change strategy** - Try a different approach systematically
+5. **Document the change** - Why did you change? What did you learn?
+
+**Strategy change options:**
+- **Different approach** - Try a completely different method
+- **Different level** - Move up (more abstract) or down (more concrete)
+- **Different angle** - Attack the problem from a different perspective
+- **Break it down differently** - Reorganize the problem structure
+- **Use different tools** - Try different techniques or resources
+
+**Key principle:** Don't keep doing the same thing that isn't working. Systematically try different approaches.
+
+## Systematic Problem Investigation
+
+When faced with a vague or unclear problem, use this structured approach:
+
+### Don't Jump to Solutions
+- Avoid assuming what the problem means
+- Ask clarifying questions before proposing fixes
+- Explore the system before making changes
+
+### Break Down Vague Problems into Specific Dimensions
+
+When someone says "X is not good" or "Y doesn't work", break it down:
+- **Correctness** - Is it factually wrong? Are there errors?
+- **Completeness** - Is information missing? Incomplete?
+- **Relevance** - Is it addressing the right thing? Using the right tools?
+- **Quality** - Is the output poorly formatted? Wrong tone?
+- **Performance** - Is it too slow? Resource-intensive?
+- **Usability** - Is it hard to use? Confusing?
+
+### Gather Evidence of Actual Behavior
+
+**Test as close as possible to the original scenario:**
+- What do stakeholders/users actually experience?
+- Test the complete experience - end-to-end flow
+- Use real scenarios - actual use cases, not simplified versions
+- Document concrete results - capture actual outputs, responses, behavior
+
+**Important:** This is evidence gathering, not debugging. Focus on documenting what happens, not fixing it yet.
+
+### Systematically Explore the System
+
+To understand how something works:
+- Read key files - configuration, main logic, core components
+- Map the flow - how does data/requests flow through the system?
+- Identify components - what are the main parts? How do they interact?
+- Check configuration - what are the settings? Parameters?
+- Review documentation - what does it say it should do?
+
+### Compare and Identify Gaps
+
+**Compare actual behavior to the reference point:**
+- What matches? - What works as expected?
+- What's missing? - What should be there but isn't?
+- What's wrong? - What contradicts the reference?
+- What's different? - What deviates from expected?
+
+## Operating Principles
+
+### Think First, Act Second
+- Understand the objective and define success criteria before implementation.
+- Discuss approach before executing; consider alternatives and trade-offs.
+- Keep “facts vs assumptions vs unknowns” explicit as you proceed.
+
+### Verify Before Declaring Success
+- Don't assume it works - test it
+- Use tools to verify, not just check exit codes
+- Test actual functionality, not just that code runs
+- Verify from user's perspective
+
+### Component Verification Before Integration
+- Test components in isolation first
+- Verify each piece works before connecting
+- Prevents cascading failures
+- Makes debugging easier
+
+### Iterative Development
+- Build in cycles: implement → test → refine
+- Don't try to perfect everything at once
+- Learn from each iteration
+- Update approach based on experience
+
+### Workaround First, Fix Later
+- Don't let small issues block progress
+- Find workarounds to keep moving
+- Document issues for later
+- Fix properly when time permits
+
+## Optional Extensions
+
+This repo is **core-only for now**. If/when you start applying the system to specific domains or projects, add extension rule files (e.g., a future `domains/` folder) only when there is repeated evidence they are needed.
