@@ -1,8 +1,7 @@
 ---
 type: always
-description: Continuous learning capability and methodology for continuous improvement
+alwaysApply: true
 ---
-
 # Continuous Learning and Improvement
 
 Learning in HereBeginsAGI has three tracks:
@@ -82,6 +81,14 @@ In this repo, the core is:
 - `core-principles/01-problem-solving.mdc`
 - `core-principles/02-continuous-learning.mdc`
 
+### Scope of "rules" (when evolving or updating)
+"Rules" can mean:
+- **Core** (above): HereBeginsAGI core-principles files.
+- **Workspace rules**: `.cursor/rules/*.mdc` at the workspace root (e.g. OrcaEcho.ai).
+- **Repo rules**: subproject `.cursor/rules/*.mdc` (e.g. `moltbot/.cursor/rules/00-repo.mdc`).
+
+The same evidence-based, minimal approach applies to all. Choose the target file by scope: project-wide → workspace rules; repo-specific → that repo's rules; universal methodology → core.
+
 ### Core update criteria (guardrails)
 Promote something into core only if:
 - **Recurring**: it prevented or resolved multiple failures across sessions/tasks
@@ -108,3 +115,13 @@ Prefer:
 - Fewer steps (simplicity)
 - Direct verification from the source of truth
 If conflict persists, revise the wording so the trade-off is explicit.
+
+### Reflect and update rules (agent flow)
+When the user asks you to **reflect and update [the] rules** (or to update rules based on lessons learned):
+
+1. **Reflect**: Use the conversation in the current session to identify steps which went wrong and human intervened, what should change (e.g. "we learned X; add Y to the rules").
+2. **Identify target**: Choose the rule file(s) by scope — core (universal methodology), workspace (project-wide conventions), or repo (that subproject only).
+3. **Draft**: Write the proposed addition or change; keep it minimal and evidence-based (same guardrails as "Core update criteria" where relevant).
+4. **Apply or propose**: If you can edit files (e.g. Agent mode), **apply** the change to the rule file(s). If you cannot (e.g. Ask mode), **propose** the exact text and say which file/section to update.
+
+The agent may perform edits to rule files when the user requests a rules update; "update the rules" means making the edit, not only suggesting it.

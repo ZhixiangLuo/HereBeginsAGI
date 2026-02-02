@@ -1,8 +1,7 @@
 ---
 type: always
-description: Universal problem-solving methodology that applies across all domains, should be loaded for every project and every task.
+alwaysApply: true
 ---
-
 # Problem-Solving Methodology
 
 This universal problem-solving approach applies to all domains - from software development to daily tasks.
@@ -208,6 +207,10 @@ To understand how something works:
 - Use tools to verify, not just check exit codes
 - Test actual functionality, not just that code runs
 - Verify from user's perspective
+
+### Complete the Change and Verify It Takes Effect
+- When a change only takes effect after a follow-up action (restart process, run command, reload), perform that action so the change is applied—don't leave it as an instruction for the user unless they've asked to do it themselves or context makes it inappropriate.
+- Then verify the change took effect (e.g. health check, smoke test, or observing the expected behavior). No dangling handoffs.
 
 ### Component Verification Before Integration
 - Test components in isolation first

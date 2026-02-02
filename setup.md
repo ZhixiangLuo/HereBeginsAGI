@@ -4,14 +4,18 @@ This file explains how to incorporate HereBeginsAGI into your Cursor setup.
 
 ## Source of truth
 
-Do not copy rules into other places. Link these files and treat them as the source of truth:
+Cursor does **not reliably auto-load symlinked** rule files. So for new repos/projects, the recommended setup is to **copy** the rules into that repo’s `.cursor/rules/`.
+
+Treat these files as the source of truth (the “upstream” you periodically re-copy from):
 
 - `core-principles/01-problem-solving.mdc` (always on): universal problem-solving methodology
 - `core-principles/02-continuous-learning.mdc` (always on): continuous learning system (execution doc iteration, project diary, careful core evolution)
 
 ## Setup in a Cursor project
 
-From the root of *your* project, put the core rules in `.cursor/rules/` as symlinks.
+From the root of *your* project, put the core rules in `.cursor/rules/` as **real files** (copied, not symlinked).
+
+Important: “copy” here means a **literal file copy** (e.g. `cp -f ...`), not copy/pasting the contents into a new file by hand.
 
 ### Option A: HereBeginsAGI is in a separate folder (recommended)
 
@@ -21,26 +25,26 @@ Use absolute paths so you can reuse one HereBeginsAGI checkout across many repos
 mkdir -p .cursor/rules
 HERE_BEGINS_AGI="/absolute/path/to/HereBeginsAGI"
 
-# (Re)link the two always-on rules
-ln -sf "$HERE_BEGINS_AGI/core-principles/01-problem-solving.mdc" .cursor/rules/01-problem-solving.mdc
-ln -sf "$HERE_BEGINS_AGI/core-principles/02-continuous-learning.mdc" .cursor/rules/02-continuous-learning.mdc
+# (Re)copy the two always-on rules
+cp -f "$HERE_BEGINS_AGI/core-principles/01-problem-solving.mdc" .cursor/rules/01-problem-solving.mdc
+cp -f "$HERE_BEGINS_AGI/core-principles/02-continuous-learning.mdc" .cursor/rules/02-continuous-learning.mdc
 ```
 
-That’s it. Cursor will load the linked `.mdc` rules for every task.
+That’s it. Cursor will load the `.mdc` rules for every task.
 
 ### Notes (recommended)
 
-- Option B (monorepo): if `HereBeginsAGI/` lives **inside** your repo (e.g. at `./HereBeginsAGI/`), prefer **relative** symlinks so the setup is portable across machines:
+- Option B (monorepo): if `HereBeginsAGI/` lives **inside** your repo (e.g. at `./HereBeginsAGI/`), copy from the local path (portable across machines):
 
 ```bash
 # Example: your repo contains ./HereBeginsAGI/
 mkdir -p .cursor/rules
-ln -s ../../HereBeginsAGI/core-principles/01-problem-solving.mdc .cursor/rules/01-problem-solving.mdc
-ln -s ../../HereBeginsAGI/core-principles/02-continuous-learning.mdc .cursor/rules/02-continuous-learning.mdc
+cp -f ./HereBeginsAGI/core-principles/01-problem-solving.mdc .cursor/rules/01-problem-solving.mdc
+cp -f ./HereBeginsAGI/core-principles/02-continuous-learning.mdc .cursor/rules/02-continuous-learning.mdc
 ```
 
-- If you rerun the commands and links already exist, overwrite with `ln -sf ...` (or remove the existing files first).
-- Windows note: creating symlinks may require Admin privileges or enabling Developer Mode. If symlinks are painful on Windows, the fallback is to copy the files into `.cursor/rules/` (but copying is **not** source-of-truth and will drift).
+- If you rerun the commands and the files already exist, overwrite with `cp -f ...`.
+- If you update the core principles, re-run the copy commands to sync downstream repos.
 
 ### Quick verification
 
@@ -50,11 +54,17 @@ From your project root:
 ls -la .cursor/rules
 ```
 
-You should see `01-problem-solving.mdc` and `02-continuous-learning.mdc` as symlinks (or real files if you used the copy fallback).
+You should see `01-problem-solving.mdc` and `02-continuous-learning.mdc` as real files (not symlinks).
 
 ### This repo (HereBeginsAGI)
 
-This repository already wires itself by symlinking `core-principles/01-problem-solving.mdc` and `core-principles/02-continuous-learning.mdc` into `HereBeginsAGI/.cursor/rules/`.
+If you want the rules to be active when working *inside* the HereBeginsAGI repo itself, copy them into `HereBeginsAGI/.cursor/rules/`:
+
+```bash
+mkdir -p .cursor/rules
+cp -f ./core-principles/01-problem-solving.mdc .cursor/rules/01-problem-solving.mdc
+cp -f ./core-principles/02-continuous-learning.mdc .cursor/rules/02-continuous-learning.mdc
+```
 
 ## Create your project diary
 

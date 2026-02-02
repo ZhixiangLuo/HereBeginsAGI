@@ -86,3 +86,52 @@ Verification:
 Notes for later:
 - Keeping repo-scoped intent in a tiny `.cursor/rules/00-repo.mdc` avoids polluting the always-on core.
 - Operational completeness: setup isn’t complete unless the diary exists in the new repo.
+
+## 2026-01-26 20:10
+
+Shipped the first public version of HereBeginsAGI and tightened the repo into a clean “first-principles + learning” foundation.
+
+What changed:
+- Naming cleanup:
+  - `core/` → `core-principles/`
+  - `02-learning.mdc` → `02-continuous-learning.mdc`
+- Diary guidance:
+  - Removed rigid templates and “follow-ups” as a default (to avoid stale TODOs); kept diary as lightweight narrative record-keeping.
+- Public readiness:
+  - Wrote/iterated `README.md` to be more ambitious (autonomous agents that learn/evolve; first-principles framing; “why this exists”) while keeping learning mechanics intentionally high-level.
+  - Added MIT `LICENSE`.
+  - Added `HereBeginsAGI/.gitignore` and ignored `.cursor/` (so Cursor wiring stays an integration concern, not a tracked artifact).
+- Release:
+  - Created `ZhixiangLuo/HereBeginsAGI` and pushed `main` to GitHub.
+
+Future impact:
+- Because `.cursor/` is ignored, consumers should follow `setup.md` rather than expecting repo-internal Cursor wiring to exist in the public repo.
+- Collaboration policy can evolve later (issues/PRs are the current “surface area”).
+
+## 2026-01-26 20:40
+
+Updated onboarding to avoid symlink-based Cursor rules because symlinked `.mdc` files are not reliably auto-loaded.
+
+What changed:
+- Updated `setup.md` to recommend **literal file copy** (`cp -f ...`) into the consumer repo’s `.cursor/rules/` (separate-folder and monorepo options).
+- Added an explicit note that “copy” means `cp` (not manually recreating files by pasting contents).
+
+Applied to OrcaEcho workspace:
+- Copied `core-principles/01-problem-solving.mdc` and `core-principles/02-continuous-learning.mdc` into `/Users/zhixiangluo/git_repos/OrcaEcho.ai/.cursor/rules/` so Cursor auto-loads them for the workspace.
+
+Future impact:
+- Any upstream updates to core principles now require re-running the copy step in downstream repos/workspaces (manual sync, but reliable loading).
+
+## 2026-02-02
+
+Synced HereBeginsAGI core-principles from OrcaEcho.ai workspace `.cursor/rules/` (workspace had newer content).
+
+What changed:
+- **01-problem-solving.mdc**: Added “Complete the Change and Verify It Takes Effect” under Operating Principles (perform follow-up action so change is applied; verify it took effect; no dangling handoffs).
+- **02-continuous-learning.mdc**: Added “Scope of ‘rules’” (Core vs workspace rules vs repo rules; how to choose target by scope). Added “Reflect and update rules (agent flow)” (reflect → identify target → draft → apply or propose; “update the rules” means making the edit, not only suggesting).
+
+Verification:
+- Compared `.cursor/rules/01-problem-solving.mdc`, `02-continuous-learning.mdc` with HereBeginsAGI `core-principles/`; applied missing sections to HereBeginsAGI. Did not copy `03-workspace-rules.mdc` (OrcaEcho-specific).
+
+Future impact:
+- HereBeginsAGI remains source of truth for the two core files; workspaces that copied from HereBeginsAGI should re-copy after core updates if they want the latest.
